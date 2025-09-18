@@ -1,0 +1,32 @@
+@use "../../styles/mixins" as *;
+
+.Explorer{
+    @include centeringdiv(column,center,center);
+    width:100%;
+    gap:4rem;
+    .items{
+        @include centeringdiv();
+        gap:2rem;
+        @media screen and (min-width:830px){
+            @include centeringdiv(row,space-evenly,center);
+        }
+        .link{
+            background-color: transparent;
+            color: #ffffff;
+            padding:2rem 4rem;
+            min-width: 6.5rem;
+            border:1px solid #ffffff;
+            border-radius: 0.5rem;
+            transition-duration: 0.5s;
+            box-shadow: none;
+            &:hover{
+                cursor: pointer;
+                background-color: #ffffff;
+                color: #1a1a1a;
+                transition-duration: 0.5s;
+                box-shadow: 0px 0px 15px 15px #46699185;
+                border-radius: 1rem;
+            }
+        }       
+    }
+}
