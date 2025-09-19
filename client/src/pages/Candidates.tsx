@@ -3,6 +3,7 @@ import { CandidateCard } from "../components";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import type { Candidate } from "@shared/schema";
+import { CandidatesListSkeleton } from "@/components/skeleton-cards";
 
 export default function Candidates() {
   const { data: candidates = [], isLoading } = useQuery<Candidate[]>({
@@ -13,15 +14,18 @@ export default function Candidates() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-foreground">Candidates</h1>
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Candidates</h1>
+            <p className="text-muted-foreground mt-2">
+              Review and evaluate potential hires
+            </p>
+          </div>
           <Button>
             <Plus className="h-4 w-4 mr-2" />
             Add Candidate
           </Button>
         </div>
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Loading candidates...</p>
-        </div>
+        <CandidatesListSkeleton />
       </div>
     );
   }

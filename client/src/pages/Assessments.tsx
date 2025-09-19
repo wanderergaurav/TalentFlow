@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Plus, ClipboardList } from "lucide-react";
 import type { Assessment } from "@shared/schema";
+import { AssessmentsListSkeleton } from "@/components/skeleton-cards";
 
 export default function Assessments() {
   const { data: assessments = [], isLoading } = useQuery<Assessment[]>({
@@ -12,15 +13,18 @@ export default function Assessments() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-foreground">Assessments</h1>
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Assessments</h1>
+            <p className="text-muted-foreground mt-2">
+              Create and manage skill evaluations
+            </p>
+          </div>
           <Button>
             <Plus className="h-4 w-4 mr-2" />
             Create Assessment
           </Button>
         </div>
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Loading assessments...</p>
-        </div>
+        <AssessmentsListSkeleton />
       </div>
     );
   }

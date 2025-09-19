@@ -5,6 +5,7 @@ import { Plus } from "lucide-react";
 import type { Job } from "@shared/schema";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest, queryClient } from "@/lib/queryClient";
+import { JobsListSkeleton } from "@/components/skeleton-cards";
 
 export default function Jobs() {
   const { toast } = useToast();
@@ -48,15 +49,18 @@ export default function Jobs() {
     return (
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-foreground">Jobs</h1>
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Jobs</h1>
+            <p className="text-muted-foreground mt-2">
+              Manage your job postings and track applications
+            </p>
+          </div>
           <Button>
             <Plus className="h-4 w-4 mr-2" />
             Add Job
           </Button>
         </div>
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">Loading jobs...</p>
-        </div>
+        <JobsListSkeleton />
       </div>
     );
   }
