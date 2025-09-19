@@ -3,6 +3,7 @@ import { Users, Menu } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Header() {
   const [location] = useLocation();
@@ -48,9 +49,11 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
           </nav>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm" data-testid="button-mobile-menu">
